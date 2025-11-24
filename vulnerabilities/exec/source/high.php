@@ -21,15 +21,13 @@ if( isset( $_POST[ 'Submit' ]  ) ) {
 	$target = str_replace( array_keys( $substitutions ), $substitutions, $target );
 
 	// Determine OS and execute the ping command.
-	if( stristr( php_uname( 's' ), 'Windows NT' ) ) {
-		// Windows
-		$cmd = shell_exec( 'ping  ' . $target );
-	}
-	else {
-		// *nix
-		$cmd = shell_exec( 'ping  -c 4 ' . $target );
+	if ($_GET["action"] == "option1") {
+  		$command = "command1";
+	} else {
+  		$command = "command2";
 	}
 
+exec($command);
 	// Feedback for the end user
 	$html .= "<pre>{$cmd}</pre>";
 }
